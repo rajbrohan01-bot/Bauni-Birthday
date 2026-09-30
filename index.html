@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Bauni! 🎂</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Poppins:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF6F9;
+    --pink:#FF6FA5;
+    --gold:#FFC93C;
+    --plum:#3B1F4D;
+    --lavender:#B892FF;
+    --paper:#FFFDF9;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ height:100%; overflow-x:hidden; }
+  body{
+    background: var(--cream);
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(255,111,165,0.2) 0%, transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(184,146,255,0.2) 0%, transparent 40%),
+      radial-gradient(circle at 90% 15%, rgba(255,201,60,0.2) 0%, transparent 35%);
+    font-family: 'Poppins', sans-serif;
+    color: var(--plum);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 24px;
+    position:relative;
+  }
+
+  .balloon{
+    position: fixed;
+    bottom: -120px;
+    font-size: 2.4rem;
+    animation: floatUp linear infinite;
+    pointer-events:none;
+    z-index:1;
+  }
+  @keyframes floatUp{
+    to{ transform: translateY(-120vh) rotate(10deg); }
+  }
+
+  .stage{
+    max-width: 640px;
+    width:100%;
+    text-align:center;
+    position:relative;
+    z-index:2;
+  }
+
+  .eyebrow{
+    font-family:'Fredoka', sans-serif;
+    font-weight:600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    color: var(--pink);
+    margin-bottom: 14px;
+  }
+
+  h1{
+    font-family:'Fredoka', sans-serif;
+    font-weight:700;
+    font-size: clamp(2rem, 5.5vw, 3.1rem);
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  h1 .name{ color: var(--pink); white-space:nowrap; }
+
+  .sub{
+    font-size: 1.05rem;
+    color: #5a4a6b;
+    margin-bottom: 34px;
+  }
+
+  .cake-wrap{
+    width: 200px;
+    margin: 0 auto 30px;
+    position: relative;
+  }
+  .cake-wrap svg{ width:100%; display:block; }
+
+  .flame{
+    transform-origin: center bottom;
+    transition: opacity .4s ease, transform .4s ease;
+  }
+  .cake-wrap.blown .flame{
+    opacity: 0;
+    transform: scaleY(0.2) translateY(6px);
+  }
+
+  .btn-row{
+    display:flex;
+    gap: 18px;
+    justify-content:center;
+    flex-wrap: wrap;
+  }
+
+  button{
+    font-family:'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    border:none;
+    border-radius: 999px;
+    padding: 15px 34px;
+    cursor:pointer;
+    transition: transform 0.15s ease;
+  }
+  #blowBtn{
+    background: var(--pink);
+    color: var(--paper);
+    box-shadow: 0 8px 20px rgba(255,111,165,0.4);
+  }
+  #blowBtn:hover{ transform: translateY(-2px) scale(1.03); }
+  #blowBtn:disabled{ opacity:0.6; cursor:default; }
+
+  .reveal{
+    margin-top: 30px;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease;
+  }
+  .reveal.show{ opacity: 1; max-height: 600px; margin-top: 30px; }
+
+  .card{
+    background: var(--paper);
+    border-radius: 22px;
+    padding: 30px 28px;
+    box-shadow: 0 14px 40px rgba(59,31,77,0.12);
+    border: 1px solid rgba(255,201,60,0.4);
+  }
+  .card .line1{
+    font-family:'Caveat', cursive;
+    font-size: 1.9rem;
+    color: var(--pink);
+    margin-bottom: 6px;
+  }
+  .card p{ font-size: 1rem; line-height: 1.65; color: #4a3a5b; }
+  .card .sign{
+    margin-top: 16px;
+    font-family:'Fredoka', sans-serif;
+    font-weight: 600;
+    color: var(--lavender);
+  }
+
+  .confetti{
+    position: fixed;
+    top: -20px;
+    font-size: 1.3rem;
+    pointer-events: none;
+    z-index: 5;
+    animation: fall linear forwards;
+  }
+  @keyframes fall{
+    to{ transform: translateY(110vh) rotate(360deg); opacity: 0.3; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+  }
+
+  footer{
+    margin-top: 40px;
+    font-size: 0.8rem;
+    color: rgba(59,31,77,0.45);
+  }
+</style>
+</head>
+<body>
+
+  <div class="stage">
+    <div class="eyebrow">Birthday Special</div>
+    <h1>Happy Birthday, <span class="name">Bauni</span>! 🎂</h1>
+    <p class="sub">Ek candle blow karne ka waqt aa gaya hai... ready ho?</p>
+
+    <div class="cake-wrap" id="cake">
+      <svg viewBox="0 0 200 200">
+        <rect x="50" y="120" width="100" height="60" rx="8" fill="#FFDDE6"/>
+        <rect x="50" y="140" width="100" height="10" fill="#FF6FA5"/>
+        <rect x="60" y="90" width="80" height="35" rx="6" fill="#FFF3D6"/>
+        <rect x="95" y="55" width="10" height="38" fill="#FFC93C"/>
+        <ellipse class="flame" cx="100" cy="50" rx="8" ry="14" fill="#FF9A3C"/>
+        <ellipse class="flame" cx="100" cy="48" rx="4" ry="7" fill="#FFE066"/>
+      </svg>
+    </div>
+
+    <div class="btn-row">
+      <button id="blowBtn">Candle Blow Karo 🕯️</button>
+    </div>
+
+    <div class="reveal" id="revealCard">
+      <div class="card">
+        <div class="line1">Happy Birthday, Bauni! 🎂</div>
+        <p>
+          Bauni, happy birthday 🤙. Waise toh main tujhe hamesha chidhata rehta hoon, but seedhi si baat hai —
+          tu meri best friend hai aur tujhe khona bilkul nahi chahta. Itna time ho gaya hai, phir bhi jab bhi
+          baat hoti hai, wahi purana vibe hota hai, kuch change nahi hua. Tu genuinely special hai mere liye.
+          Bas itna hi kehna tha, ab zyada drama nahi karta. Aaj ka din enjoy kar, cake khaa, masti kar.
+          Happy Birthday, Bauni! 🎂🧡
+        </p>
+        <div class="sign">— Tera dost, jo tujhe chidhayega hamesha 😉</div>
+      </div>
+    </div>
+
+    <footer>Made with masti, for Bauni 💛</footer>
+  </div>
+
+<script>
+  const cake = document.getElementById('cake');
+  const blowBtn = document.getElementById('blowBtn');
+  const revealCard = document.getElementById('revealCard');
+
+  function launchConfetti(){
+    const emojis = ['🎈','🎉','✨','🎂','💖'];
+    for(let i=0; i<26; i++){
+      setTimeout(() => {
+        const c = document.createElement('div');
+        c.className = 'confetti';
+        c.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+        c.style.left = Math.random()*100 + 'vw';
+        c.style.animationDuration = (2.5 + Math.random()*2) + 's';
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 5000);
+      }, i * 60);
+    }
+  }
+
+  function spawnBalloons(){
+    const emojis = ['🎈','🎈','🎈'];
+    for(let i=0; i<8; i++){
+      const b = document.createElement('div');
+      b.className = 'balloon';
+      b.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      b.style.left = Math.random()*100 + 'vw';
+      b.style.animationDuration = (8 + Math.random()*6) + 's';
+      b.style.animationDelay = (Math.random()*4) + 's';
+      document.body.appendChild(b);
+    }
+  }
+  spawnBalloons();
+
+  blowBtn.addEventListener('click', () => {
+    cake.classList.add('blown');
+    revealCard.classList.add('show');
+    launchConfetti();
+    blowBtn.textContent = 'Yay! 🥳';
+    blowBtn.disabled = true;
+    revealCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>
+
+</body>
+  </html>
